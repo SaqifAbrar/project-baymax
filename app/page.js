@@ -1,15 +1,27 @@
 "use client";
 
 import React, { useState } from "react";
+import { CohereClient } from "cohere-ai";
 
 export default function Page() {
 	const [prompt, setPrompt] = useState("");
 	const [generation, setGeneration] = useState("");
+	const [audio, setAudio] = useState("");
 
 	async function onSubmit(event) {
 		event.preventDefault();
 
-		const response = await fetch("http://localhost:3000/api/submit", {
+		try {
+			const audioUrl = await fetch("http://localhost:8080", {
+				method: "POST",
+				body: prompt,
+			});
+			console.log(audioUrl);
+		} catch (e) {
+			console.log(e);
+		}
+
+		/*const response = await fetch("http://localhost:3000/api/submit", {
 			method: "POST",
 			body: prompt,
 		});
@@ -19,9 +31,33 @@ export default function Page() {
 		// Handle response if necessary
 		const data = await response.json();
 
-		console.log(data);
+		console.log(data);*/
+		/*try {
+			const cohere = new CohereClient({
+				token: "VTpQYISCpDpz7mTx4yeBiMC8HEcbGaIT5pylW52S",
+			});
 
-		setGeneration(data);
+			const stream = await cohere.chatStream({
+				model: "0e7039a0-4dfc-4ace-b430-ad7b5580a0af-ft",
+				message: "Hello",
+			});
+
+			//console.log(stream);
+
+			let generatedText = "";
+			for await (const chat of stream) {
+				if (chat.eventType === "text-generation") {
+					process.stdout.write(chat.text);
+					generatedText += chat.text;
+				}
+			}
+
+			console.log(generatedText);
+
+			setGeneration(data);
+		} catch (e) {
+			console.log(e);
+		}*/
 	}
 
 	function onChange(event) {
@@ -30,7 +66,12 @@ export default function Page() {
 
 	return (
 		<form onSubmit={onSubmit}>
-			<input type="text" name="name" onChange={onChange} />
+			<input
+				className="text-gray-900"
+				type="text"
+				name="name"
+				onChange={onChange}
+			/>
 			<button type="submit">Submit</button>
 		</form>
 	);

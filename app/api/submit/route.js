@@ -7,11 +7,10 @@ const cohere = new CohereClient({
 export async function POST(request) {
 	try {
 		const req = await request.json();
-		console.log(req);
 
 		const stream = await cohere.chatStream({
 			model: "0e7039a0-4dfc-4ace-b430-ad7b5580a0af-ft",
-			message: req.text(),
+			message: req.body.content,
 		});
 
 		console.log("test");
