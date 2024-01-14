@@ -3,18 +3,16 @@
 import React, { useState } from "react";
 
 export default function Page() {
-	const [data, setData] = useState("");
+	const [prompt, setPrompt] = useState("");
+	const [generation, setGeneration] = useState("");
 
 	async function onSubmit(event) {
 		event.preventDefault();
 
-		const formData = new FormData(event.target);
-		console.log(event.target.text);
-
-		/*const response = await fetch("http://localhost:3000/api/submit", {
+		const response = await fetch("http://localhost:3000/api/submit", {
 			method: "POST",
-			body: formData,
-		});*/
+			body: prompt,
+		});
 
 		// console.log(response);
 
@@ -23,12 +21,16 @@ export default function Page() {
 
 		console.log(data);
 
-		setData(data);
+		setGeneration(data);
+	}
+
+	function onChange(event) {
+		setPrompt(event.target.value);
 	}
 
 	return (
 		<form onSubmit={onSubmit}>
-			<input type="text" name="name" />
+			<input type="text" name="name" onChange={onChange} />
 			<button type="submit">Submit</button>
 		</form>
 	);

@@ -1,15 +1,17 @@
 import { CohereClient } from "cohere-ai";
 
 const cohere = new CohereClient({
-	token: "VTpQYISCpDpz7mTx4yeBiMC8HEcbGaIT5pylW52S",
+	token: `${process.env.COHERE_API_KEY}`,
 });
 
 export async function POST(request) {
 	try {
-		console.log(request.text());
+		const req = await request.json();
+		console.log(req);
+
 		const stream = await cohere.chatStream({
 			model: "0e7039a0-4dfc-4ace-b430-ad7b5580a0af-ft",
-			message: "I have a problem Baymax!",
+			message: req.text(),
 		});
 
 		console.log("test");
