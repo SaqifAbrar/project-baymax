@@ -1,5 +1,35 @@
 "use client";
 
+import React, { useState } from "react";
+
+export default function Page() {
+	const [data, setData] = useState("");
+
+	async function onSubmit(event) {
+		event.preventDefault();
+
+		const formData = new FormData(event.target);
+
+		const response = await fetch("http://localhost:3000/api/submit", {
+			method: "POST",
+			body: formData,
+		});
+
+		// console.log(response);
+
+		// Handle response if necessary
+		const data = await response.json();
+	}
+
+	return (
+		<form onSubmit={onSubmit}>
+			<input type="text" name="name" />
+			<button type="submit">Submit</button>
+		</form>
+	);
+}
+
+/*
 import { useCompletion } from "ai/react";
 
 export default function Chat() {
@@ -28,3 +58,4 @@ export default function Chat() {
 		</div>
 	);
 }
+*/
