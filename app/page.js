@@ -1,5 +1,5 @@
 "use client";
-
+import { Baymax } from "../app/components/baymax";
 import React, { useState } from "react";
 
 export default function Page() {
@@ -27,10 +27,16 @@ export default function Page() {
 	}
 
 	return (
-		<form onSubmit={onSubmit}>
-			<input type="text" name="name" />
-			<button type="submit">Submit</button>
-		</form>
+		<div className="flex flex-row">
+			<div className="w-1/2">
+				<Baymax />
+			</div>
+			<form onSubmit={onSubmit} className="w-1/2">
+				<input type="text" name="name" />
+				<button type="submit">Submit</button>
+			</form>
+		</div>
+
 	);
 }
 
