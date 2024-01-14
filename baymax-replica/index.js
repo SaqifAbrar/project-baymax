@@ -8,7 +8,7 @@ app.use(bodyParser.json());
 
 const baymax_voice = async (text) => {
 	try {
-		//if (text === undefined) throw new Error();
+		if (text === undefined) throw new Error();
 
 		PlayHT.init({
 			apiKey: "8e46f7ad33ea4b169b4e0c2d6ac90256",
@@ -19,7 +19,7 @@ const baymax_voice = async (text) => {
 		});
 
 		// Generate audio from text
-		const generated = await PlayHT.generate("Hello! My name is Baymax");
+		const generated = await PlayHT.generate(text);
 
 		// Grab the generated file URL
 		const { audioUrl } = generated;

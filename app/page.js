@@ -11,17 +11,7 @@ export default function Page() {
 	async function onSubmit(event) {
 		event.preventDefault();
 
-		try {
-			const audioUrl = await fetch("http://localhost:8080", {
-				method: "POST",
-				body: prompt,
-			});
-			console.log(audioUrl);
-		} catch (e) {
-			console.log(e);
-		}
-
-		/*const response = await fetch("http://localhost:3000/api/submit", {
+		const response = await fetch("http://localhost:3000/api/submit", {
 			method: "POST",
 			body: prompt,
 		});
@@ -31,7 +21,17 @@ export default function Page() {
 		// Handle response if necessary
 		const data = await response.json();
 
-		console.log(data);*/
+		console.log(data);
+
+		/*try {
+			const audioUrl = await fetch("http://localhost:8080", {
+				method: "POST",
+				body: prompt,
+			});
+			console.log(audioUrl);
+		} catch (e) {
+			console.log(e);
+		}*/
 		/*try {
 			const cohere = new CohereClient({
 				token: "VTpQYISCpDpz7mTx4yeBiMC8HEcbGaIT5pylW52S",
