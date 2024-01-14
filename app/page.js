@@ -9,16 +9,21 @@ export default function Page() {
 		event.preventDefault();
 
 		const formData = new FormData(event.target);
+		console.log(event.target.text);
 
-		const response = await fetch("http://localhost:3000/api/submit", {
+		/*const response = await fetch("http://localhost:3000/api/submit", {
 			method: "POST",
 			body: formData,
-		});
+		});*/
 
 		// console.log(response);
 
 		// Handle response if necessary
 		const data = await response.json();
+
+		console.log(data);
+
+		setData(data);
 	}
 
 	return (

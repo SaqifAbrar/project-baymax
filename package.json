@@ -1,27 +1,28 @@
 {
-  "name": "project-baymax",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "ai": "^2.2.31",
-    "cohere-ai": "^7.6.2",
-    "next": "14.0.4",
-    "react": "^18",
-    "react-dom": "^18"
-  },
-  "devDependencies": {
-    "@types/node": "20.11.0",
-    "@types/react": "18.2.47",
-    "autoprefixer": "^10.0.1",
-    "eslint": "^8",
-    "eslint-config-next": "14.0.4",
-    "postcss": "^8",
-    "tailwindcss": "^3.3.0"
-  }
+	"name": "project-baymax",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint"
+	},
+	"dependencies": {
+		"ai": "^2.2.31",
+		"cohere-ai": "^7.6.2",
+		"next": "14.0.4",
+		"playht": "^0.9.6",
+		"react": "^18",
+		"react-dom": "^18"
+	},
+	"devDependencies": {
+		"@types/node": "20.11.0",
+		"@types/react": "18.2.47",
+		"autoprefixer": "^10.0.1",
+		"eslint": "^8",
+		"eslint-config-next": "14.0.4",
+		"postcss": "^8",
+		"tailwindcss": "^3.3.0"
+	}
 }
